@@ -1,4 +1,12 @@
 <header>
-    <h1>todos</h1>
-    <input type="text" placeholder="What needs to be done?" autofocus>
+  <h1 class="display-1 text-center text-danger my-4">todos</h1>
+  <input
+    class="form-control"
+    type="text"
+    placeholder="What needs to be done?"
+    autofocus
+    [value]="text"
+    (keyup)="changeText($event)"
+    (keyup.enter)="addTodo()"
+  />
 </header>
