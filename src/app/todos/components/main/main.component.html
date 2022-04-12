@@ -1,3 +1,10 @@
-<p>main works!</p>
-
-=== {{ visibleTodos$ | async | json }} ===
+<section [ngClass]="{ hidden: noTodoClass$ | async }">
+  <ol class="list-group list-group-numbered mt-3">
+    <app-todo
+      *ngFor="let todo of visibleTodos$ | async"
+      [todo]="todo"
+      class="app-todost-group-item"
+    >
+    </app-todo>
+  </ol>
+</section>

@@ -11,8 +11,12 @@ import { Todo } from '../../types/todo';
 })
 export class MainComponent implements OnInit {
   visibleTodos$: Observable<Todo[]>;
+  noTodoClass$: Observable<boolean>;
 
   constructor(private todosService: TodosService) {
+    this.noTodoClass$ = this.todosService.todos$.pipe(
+      map((todos) => todos.length === 0)
+    );
     this.visibleTodos$ = this.todosService.todos$.pipe(
       combineLatestWith(this.todosService.filter$),
       map(([todos, filter]: [Todo[], Filter]) => {
