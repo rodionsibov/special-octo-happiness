@@ -1,5 +1,7 @@
 # TodoApp
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/71dca698-fd90-449f-9d3f-5b4c76d4971d/deploy-status)](https://app.netlify.com/sites/bucolic-dodol-5bfe2b/deploys)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2.
 
 ## Development server
