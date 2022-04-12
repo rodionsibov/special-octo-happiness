@@ -16,9 +16,12 @@ export class MainComponent implements OnInit {
     this.visibleTodos$ = this.todosService.todos$.pipe(
       combineLatestWith(this.todosService.filter$),
       map(([todos, filter]: [Todo[], Filter]) => {
-        console.log(todos, filter);
-        
-        return [];
+        if (filter === Filter.active) {
+          return todos.filter((todo) => !todo.isCompleted);
+        } else if (filter === Filter.completed) {
+          return todos.filter((todo) => todo.isCompleted);
+        }
+        return todos;
       })
     );
   }
