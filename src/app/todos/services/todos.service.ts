@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Filter } from '../types/filter';
 import { Todo } from '../types/todo';
 
 @Injectable({
@@ -7,6 +8,7 @@ import { Todo } from '../types/todo';
 })
 export class TodosService {
   todos$ = new BehaviorSubject<Todo[]>([]);
+  filter$ = new BehaviorSubject<Filter>(Filter.all);
 
   constructor() {}
 
