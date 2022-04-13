@@ -1,5 +1,19 @@
-<section [ngClass]="{ hidden: noTodoClass$ | async }">
-  <ol class="list-group list-group-numbered mt-3">
+<section [hidden]="noTodoClass$ | async" class="mt-3">
+  <!-- [ngClass]="{ hidden: noTodoClass$ | async }" -->
+
+  <div class="form-check mb-3">
+    <input
+      type="checkbox"
+      [checked]="isAllTodosSelected$ | async"
+      (change)="toggleAllTodos($event)"
+      id="toggle-all"
+      class="form-check-input"
+    />
+    <label for="toggle-all" class="form-check-label"
+      >Mark all as completed</label
+    >
+  </div>
+  <ol class="list-group list-group-numbered">
     <app-todo
       *ngFor="let todo of visibleTodos$ | async"
       [todo]="todo"
