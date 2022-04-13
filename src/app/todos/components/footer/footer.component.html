@@ -7,27 +7,27 @@
       <strong> {{ itemsLeftText$ | async }}</strong>
     </div>
     <div class="list-group list-group-horizontal">
-        <a
-          class="list-group-item list-group-item-action"
-          href="/"
-          [ngClass]="{ active: true }"
-          (click)="changeFilter($event, filterEnum.all)"
-          >All</a
-        >
-        <a
-          class="list-group-item list-group-item-action"
-          href="/"
-          [ngClass]="{ active: true }"
-          (click)="changeFilter($event, filterEnum.active)"
-          >Active</a
-        >
-        <a
-          class="list-group-item list-group-item-action"
-          href="/"
-          [ngClass]="{ active: true }"
-          (click)="changeFilter($event, filterEnum.completed)"
-          >Completed</a
-        >
+      <a
+        class="list-group-item list-group-item-action"
+        href="/"
+        [ngClass]="{ active: (filter$ | async) === filterEnum.all }"
+        (click)="changeFilter($event, filterEnum.all)"
+        >All</a
+      >
+      <a
+        class="list-group-item list-group-item-action"
+        href="/"
+        [ngClass]="{ active: (filter$ | async) === filterEnum.active }"
+        (click)="changeFilter($event, filterEnum.active)"
+        >Active</a
+      >
+      <a
+        class="list-group-item list-group-item-action"
+        href="/"
+        [ngClass]="{ active: (filter$ | async) === filterEnum.completed }"
+        (click)="changeFilter($event, filterEnum.completed)"
+        >Completed</a
+      >
     </div>
   </div>
 </footer>

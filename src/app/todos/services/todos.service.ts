@@ -31,4 +31,8 @@ export class TodosService {
     });
     this.todos$.next(updatedTodos);
   }
+
+  changeFilter(filterName: Filter): void {
+    this.filter$.next(filterName);
+  }
 }

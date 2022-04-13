@@ -1,4 +1,8 @@
-<section [hidden]="noTodoClass$ | async" class="my-3 overflow-auto" style="height: 300px;">
+<section
+  [hidden]="noTodoClass$ | async"
+  class="my-3 p-1 overflow-auto"
+  style="height: 300px"
+>
   <!-- [ngClass]="{ hidden: noTodoClass$ | async }" -->
 
   <div class="form-check mb-3">
@@ -13,12 +17,12 @@
       >Mark all as completed</label
     >
   </div>
-  <ol class="list-group list-group-numbered">
+  <div class="list-group list-group-flush">
     <app-todo
       *ngFor="let todo of visibleTodos$ | async"
       [todo]="todo"
-      class="app-todost-group-item"
+      class="list-group-item list-group-item-action"
     >
     </app-todo>
-  </ol>
+  </div>
 </section>

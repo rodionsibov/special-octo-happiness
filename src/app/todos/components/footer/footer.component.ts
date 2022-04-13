@@ -12,6 +12,7 @@ export class FooterComponent implements OnInit {
   noTodosClass$: Observable<boolean>;
   activeCount$: Observable<number>;
   itemsLeftText$: Observable<string>;
+  filter$: Observable<Filter>
   filterEnum = Filter;
 
   constructor(private todosService: TodosService) {
@@ -24,13 +25,13 @@ export class FooterComponent implements OnInit {
     this.noTodosClass$ = this.todosService.todos$.pipe(
       map((todos) => todos.length === 0)
     );
+    this.filter$ = this.todosService.filter$
   }
 
   ngOnInit(): void {}
 
-  changeFilter(event: Event, filter: Filter): void {
+  changeFilter(event: Event, filterName: Filter): void {
     event.preventDefault()
-    console.log('changeFilter', filter);
-    
+    this.todosService.changeFilter(filterName)
   }
 }
