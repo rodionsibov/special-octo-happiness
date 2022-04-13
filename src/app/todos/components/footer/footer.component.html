@@ -1,0 +1,6 @@
+<footer [hidden]="noTodosClass$ | async">
+  <span class="badge bg-secondary">
+    <strong>{{ activeCount$ | async }}</strong>
+    {{ itemsLeftText$ | async }}
+  </span>
+</footer>
