@@ -19,7 +19,9 @@ export class HeaderComponent implements OnInit {
   }
 
   addTodo(): void {
-    this.todosService.addTodo(this.text);
-    this.text = ''
+    if (this.text) {
+      this.todosService.addTodo(this.text);
+      this.text = '';
+    }
   }
 }

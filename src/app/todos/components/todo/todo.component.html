@@ -1,2 +1,30 @@
-{{ todoProps.text }}
-<span>{{ todoProps.isCompleted }}</span>
+<div [ngClass]="{ editing: isEditingProps }" class="d-flex align-items-center">
+  <input
+    type="checkbox"
+    class="form-check-input"
+    [checked]="todoProps.isCompleted"
+    (change)="toggleTodo()"
+  />
+  <label
+    (dblclick)="setTodoInEditMode()"
+    class="flex-grow-1 mx-2 form-check-label"
+  >
+    {{ todoProps.text }}
+  </label>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="removeTodo()"
+  ></button>
+</div>
+<ng-container *ngIf="isEditingProps">
+  <input
+    type="text"
+    #textInput
+    class="form-control"
+    [value]="editingText"
+    (keyup)="changeText($event)"
+    (keyup.enter)="changeTodo()"
+  />
+</ng-container>

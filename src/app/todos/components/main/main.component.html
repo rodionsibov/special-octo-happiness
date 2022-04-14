@@ -14,13 +14,15 @@
       class="form-check-input"
     />
     <label for="toggle-all" class="form-check-label"
-      >Mark all as completed</label
+      ><small>Mark all as completed</small></label
     >
   </div>
   <div class="list-group list-group-flush">
     <app-todo
       *ngFor="let todo of visibleTodos$ | async"
       [todo]="todo"
+      [isEditing]="editingId === todo.id"
+      (setEditingId)="setEditingId($event)"
       class="list-group-item list-group-item-action"
     >
     </app-todo>
